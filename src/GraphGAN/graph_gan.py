@@ -43,8 +43,11 @@ class GraphGan(object): #GraphGan Class
         self.build_gan()
         print("build gan")
         self.config = tf.ConfigProto()
+        print("config self")
         self.config.gpu_options.allow_growth = True
+        print("config gpu")
         self.init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
+        print("init op")
         self.sess = tf.Session(config=self.config)
         print("before run")
         self.sess.run(self.init_op)
