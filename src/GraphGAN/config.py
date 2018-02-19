@@ -1,6 +1,11 @@
 import numpy as np
-batch_size_dis = 64  # batch size for discriminator
-batch_size_gen = 64  # batch size for generator
+# batch_size_dis = 64  # batch size for discriminator
+# batch_size_gen = 64  # batch size for generator
+
+
+batch_size_dis = 32  # batch size for discriminator
+batch_size_gen = 32  # batch size for generator
+
 lambda_dis = 1e-5  # l2 loss regulation factor for discriminator
 lambda_gen = 1e-5  # l2 loss regulation factor for generator
 n_sample_dis = 20  # sample num for generator
@@ -36,4 +41,3 @@ modes = ["dis", "gen"]
 emb_filenames = ["../../pre_train/" + app + "/CA-GrQc_" + modes[0] + "_" + str(random_state) + ".emb",
                  "../../pre_train/" + app + "/CA-GrQc_" +  modes[1] + "_" + str(random_state) + ".emb"]
 result_filename = "../../results/" + app + "/CA-GrQc_" +  str(random_state) + ".txt"
-
