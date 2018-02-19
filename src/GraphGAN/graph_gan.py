@@ -18,15 +18,14 @@ import config
 import evaluation.eval_link_prediction as elp
 
 
-class GraphGan(object):
+class GraphGan(object): #GraphGan Class
     def __init__(self):
         """initialize the parameters, prepare the data and build the network"""
-
         self.n_node, self.linked_nodes = utils.read_edges(config.train_filename, config.test_filename)
-        self.root_nodes = [i for i in range(self.n_node)]
-        self.discriminator = None
+        self.root_nodes = [i for i in range(self.n_node)] #root nodes for each node
+        self.discriminator = None #none right now
         self.generator = None
-        assert self.n_node == config.n_node
+        assert self.n_node == config.n_node # if equal
         print("start reading initial embeddings")
         # read the initial embeddings
         self.node_embed_init_d = utils.read_emd(filename=config.pretrain_emd_filename_d, n_node=config.n_node, n_embed=config.n_embed)
@@ -38,6 +37,7 @@ class GraphGan(object):
             self.mul_construct_trees_for_recommend(self.user_nodes)
         else:  # classification
             self.mul_construct_trees(self.root_nodes)
+        print("after storing the data")
         config.max_degree = utils.get_max_degree(self.linked_nodes)
         self.build_gan()
         self.config = tf.ConfigProto()
@@ -104,11 +104,11 @@ class GraphGan(object):
                 node_select = node_check
             n = n + 1
         return sample
-    
+
     def softmax(self, x):
         e_x = np.exp(x - np.max(x))  # for numberation stablity
         return e_x / e_x.sum()
-        
+
     def mul_construct_trees(self, nodes):
         """use the multiprocessing to speed the process of constructing trees
 
@@ -372,6 +372,6 @@ class GraphGan(object):
         with open(config.result_filename, mode="a+") as f:
             f.writelines(results)
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     g_g = GraphGan()
     g_g.train_gan()
