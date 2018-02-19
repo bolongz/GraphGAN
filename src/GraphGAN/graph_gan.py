@@ -39,6 +39,7 @@ class GraphGan(object): #GraphGan Class
             self.mul_construct_trees(self.root_nodes)
         print("after storing the data")
         config.max_degree = utils.get_max_degree(self.linked_nodes)
+        print("config.max")
         self.build_gan()
         self.config = tf.ConfigProto()
         self.config.gpu_options.allow_growth = True
