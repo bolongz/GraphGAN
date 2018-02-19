@@ -46,6 +46,7 @@ class GraphGan(object): #GraphGan Class
         self.config.gpu_options.allow_growth = True
         self.init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
         self.sess = tf.Session(config=self.config)
+        print("before run")
         self.sess.run(self.init_op)
 
 
