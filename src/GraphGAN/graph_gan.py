@@ -41,6 +41,7 @@ class GraphGan(object): #GraphGan Class
         config.max_degree = utils.get_max_degree(self.linked_nodes)
         print("config.max")
         self.build_gan()
+        print("build gan")
         self.config = tf.ConfigProto()
         self.config.gpu_options.allow_growth = True
         self.init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
