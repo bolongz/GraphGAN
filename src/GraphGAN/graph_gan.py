@@ -42,7 +42,7 @@ class GraphGan(object): #GraphGan Class
         print("config.max")
         self.build_gan()
         print("build gan")
-		self.config = tf.ConfigProto(devoce_count = {'GPU': 0})
+        self.config = tf.ConfigProto() #devoce_count = {'GPU': 0})
         print("config self")
         self.config.gpu_options.allow_growth = True
         print("config gpu")
@@ -53,7 +53,6 @@ class GraphGan(object): #GraphGan Class
         #self.sess = tf.Session()
         print("before run")
         self.sess.run(self.init_op)
-
 
 
     def sample_for_gan(self, root, tree, sample_num, all_score, sample_for_dis):
