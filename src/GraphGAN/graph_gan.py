@@ -42,13 +42,15 @@ class GraphGan(object): #GraphGan Class
         print("config.max")
         self.build_gan()
         print("build gan")
-        self.config = tf.ConfigProto()
+        #self.config = tf.ConfigProto()
         print("config self")
-        self.config.gpu_options.allow_growth = False
+        #self.config.gpu_options.allow_growth = False
         print("config gpu")
+        #tf.group An operation that executes all its input
         self.init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
         print("init op")
-        self.sess = tf.Session(config=self.config)
+        #self.sess = tf.Session(config=self.config)
+        self.sess = tf.Session()
         print("before run")
         self.sess.run(self.init_op)
 
