@@ -42,7 +42,7 @@ class GraphGan(object): #GraphGan Class
         print("config.max")
         self.build_gan()
         print("build gan")
-        self.config = tf.ConfigProto(devoce_count = {"GPU": 0, "CPU":1})
+        self.config = tf.ConfigProto(device_count = {"GPU": 0, "CPU":1})
         print("config self")
         self.config.gpu_options.allow_growth = True
         print("config gpu")
